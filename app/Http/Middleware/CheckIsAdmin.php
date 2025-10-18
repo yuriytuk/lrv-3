@@ -5,6 +5,7 @@ namespace App\Http\Middleware;
 use Closure;
 use Illuminate\Http\Request;
 use Symfony\Component\HttpFoundation\Response;
+use Illuminate\Support\Facades\Auth;
 
 class CheckIsAdmin
 {
@@ -19,6 +20,7 @@ class CheckIsAdmin
         if (!$user->is_admin) {
             return abort(403);
         }
+
         return $next($request);
     }
 }
